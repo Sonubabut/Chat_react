@@ -1,0 +1,61 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.home-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-top: 50px;
+}
+
+.intro {
+  max-width: 50%;
+  margin-top: 10px;
+}
+
+.intro h2 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.intro p {
+  font-size: 2em;
+  color: #666;
+  margin-top: 10px;
+}
+
+.explore-button {
+  display: flex;
+  align-items: center;
+  background-color: #abc5c8;
+  border-radius: 50px;
+  color: #000;
+  border: none;
+  padding: 15px 30px;
+  margin-right: 200px;
+  font-size: 1.5em;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.explore-button svg {
+  margin-left: 10px;
+}
+
+.robot-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.home-footer {
+  margin-top: 50px;
+  font-size: 1.2em;
+}
