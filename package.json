@@ -31,7 +31,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+<<<<<<< HEAD
   "proxy": "http://3.141.80.10:5002/",
+=======
+   "proxy": "http://3.141.80.10:5000/",
+>>>>>>> 831a4a703eb988d27d62bf84ce521e5df7bc270e
   "eslintConfig": {
     "extends": [
       "react-app",
