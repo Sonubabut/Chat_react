@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import { IoSend } from "react-icons/io5";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import ReactMarkdown from "react-markdown";
 import "./Chat.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,34 +15,23 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     height: "89vh",
     width: "100%",
-    backgroundImage: `url(${'https://test.digitalt3.com/wp-content/uploads/2024/05/Background-Image.png'})`,
+    backgroundImage: `url(${'https://test.digitalt3.com/wp-content/uploads/2024/06/legal_bgimg.png'})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     overflow: 'hidden',
     borderRadius: '8px',
     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
   },
-  // chatHeader: {
-  //   padding: '16px',
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   backgroundColor: '#00004d',
-  //   color: '#fff',
-  //   borderBottom: '2px solid #ddd',
-  // },
   chatHistory: {
     flex: 1,
     overflowY: 'auto',
     padding: '16px',
     position: 'relative',
-    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderBottom: '2px solid #ddd',
   },
   chatInputContainer: {
     display: 'flex',
     alignItems: 'center',
-    // padding: '5px',
     borderTop: '1px solid #ddd',
     backgroundColor: '#f2f2f2',
   },
@@ -72,11 +62,15 @@ const useStyles = makeStyles((theme) => ({
     color: '#333',
     border: 'none',
     borderRadius: '4px',
-    padding: '8px 16px',
+    padding: '3px 15px',
     cursor: 'pointer',
+    marginBottom: '15px',
     "&:hover": {
       backgroundColor: '#bdbdbd',
     },
+  },
+  chatMessageText: {
+    whiteSpace: 'pre-wrap',
   },
 }));
 
@@ -128,12 +122,9 @@ const Chat = () => {
 
   return (
     <div className={classes.chatContainer}>
-      {/* <div className={classes.chatHeader}>
-        Chat with our assistant
-      </div> */}
       <div className={classes.chatHistory}>
         <div className="chat-indicator">
-          {isSending && <div className="typing-indicator">Sustainable......</div>}
+          {isSending && <div className="typing-indicator">Legal expert......</div>}
         </div>
         <div className="chat-messages">
           {messages.map((message, index) => (
@@ -142,20 +133,29 @@ const Chat = () => {
                 <img
                   src={
                     message.role === "user"
-                      ? "https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
-                      : "https://test.digitalt3.com/wp-content/uploads/2023/11/cropped-cropped-DT3_wobg.png"
+                      ? "https://test.digitalt3.com/wp-content/uploads/2024/06/legal_chat2.png"
+                      : "https://test.digitalt3.com/wp-content/uploads/2024/06/legal_exp.png"
                   }
                   alt={message.role}
                 />
               </div>
               <div className="chat-message-content">
                 <div className="chat-message-label">
-                  {message.role === "user" ? "You" : "Bot"}
+                  {message.role === "user" ? "You" : "Legal Expert"}
                 </div>
                 <div className="chat-message-text">
-                  <SyntaxHighlighter language="javascript" >
-                    {message.content}
-                  </SyntaxHighlighter>
+                  {message.role === "assistant" ? (
+                    <ReactMarkdown components={{
+                      p: ({ node, ...props }) => <p {...props} style={{ margin: '20px 0' }} />,
+                      strong: ({ node, ...props }) => <strong {...props} style={{ fontWeight: 'bold' }} />,
+                    }}>
+                      {message.content}
+                    </ReactMarkdown>
+                  ) : (
+                    <SyntaxHighlighter>
+                      {message.content}
+                    </SyntaxHighlighter>
+                  )}
                   {message.role === "assistant" && (
                     <CopyToClipboard text={message.content}>
                       <div className="chat-message-copy">Copy</div>
@@ -169,9 +169,6 @@ const Chat = () => {
             </div>
           ))}
         </div>
-        {/* <div className="chat-scrollbar"> */}
-          <div className="chat-scrollbar-thumb" />
-        {/* </div> */}
       </div>
       <form onSubmit={handleSubmit} className={classes.chatInputContainer}>
         <TextField

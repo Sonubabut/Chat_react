@@ -8,20 +8,20 @@ const Home = () => {
     <div className="home-container">
       <main className="home-main">
         <div className="intro">
-          <h2>Driving Sustainability with AI!</h2>
-          <p>Discover Sustainable Solutions with Our AWS and SambaNova Powered Chatbot</p>
+          <h2>Driving Legal Expert with AI!</h2>
+          <p>Deliver Legal Solutions with Our AWS and SambaNova Powered Expert</p>
           <Link to="/chat" className="explore-button">
-            Explore More..
+          Try&nbsp;&nbsp;Now
             <FaArrowRightLong
-            style={{fontSize: "40px", width: "120px"}} />
+            style={{fontSize: "30px", width: "100px"}} />
           </Link>
         </div>
         <div className="robot-image">
-          <img src="https://test.digitalt3.com/wp-content/uploads/2024/05/landing-1.png" alt="AI Robot" />
+          <img src="https://test.digitalt3.com/wp-content/uploads/2024/05/land-page_01.png" alt="AI Robot" />
         </div>
       </main>
       <footer className="home-footer">
-        <p>Start Your AI Journey Today!</p>
+        {/* <p>Start Your Legal Journey Today!</p> */}
       </footer>
     </div>
   );
